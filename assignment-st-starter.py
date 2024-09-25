@@ -103,3 +103,16 @@ ax.set_ylabel('Number of Passengers')
 
 # Display the plot in the Streamlit app
 st.pyplot(fig)
+
+
+st.subheader('different survival rate by different ticket class')
+# Group by class and calculate survival rate
+survival_rate_by_class = df.groupby('Pclass')['Survived'].value_counts(normalize=True).unstack()
+
+# Plot the bar graph using matplotlib
+plt.figure(figsize=(15, 5))
+plt.style.use('seaborn-v0_8')  # Use seaborn style for the plot
+survival_rate_by_class.plot(kind='bar', stacked=True)
+
+# Show the plot in Streamlit
+st.pyplot(plt)
