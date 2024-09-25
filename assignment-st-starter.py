@@ -108,7 +108,7 @@ st.pyplot(fig)
 st.subheader('different survival rate by different ticket class')
 survival_rate_by_class = df.groupby('Pclass')['Survived'].value_counts(normalize=True) 
 
-fig, ax = plt.subplots(figsize=(15, 5))  
+fig, ax = plt.subplots()  
 survival_rate_by_class.plot.bar() 
 plt.title('Survival Rate by Class')  
 plt.xlabel('Passenger Class')  
