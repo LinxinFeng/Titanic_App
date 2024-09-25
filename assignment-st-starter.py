@@ -23,16 +23,35 @@ st.dataframe(df)  # Display the DataFrame in a scrollable table
 # Group the data by ticket class and calculate the survival rate for each class
 survival_rate_by_class = df.groupby('Pclass')['Survived'].mean() * 100
 
-# Create a bar plot for survival rates by ticket class
-st.subheader('Survival Rate by Ticket Class')
+# Creating a figure with three subplots for box plots of ticket prices across different classes
+plt.figure(figsize=(15, 5))
+plt.style.use('seaborn-v0_8')
 
-# Plot the survival rate
-fig, ax = plt.subplots()
-ax.bar(survival_rate_by_class.index, survival_rate_by_class.values)
-ax.set_title('Survival Rate by Ticket Class', fontsize=14)
-ax.set_xlabel('Ticket Class', fontsize=12)
-ax.set_ylabel('Survival Rate (%)', fontsize=12)
+# Subplot 1: Ticket prices for 1st class
+plt.subplot(1, 3, 1)
+plt.boxplot(df[df['Pclass'] == 1]['Fare'])
+plt.title('Ticket Price (1st Class)')
+plt.xlabel('PClass=1')
+plt.xticks([1], ['Fare'])
+plt.ylabel('Ticket Price ($)')
 
-# Display the plot in the Streamlit app
-st.pyplot(fig)
+# Subplot 2: Ticket prices for 2nd class
+plt.subplot(1, 3, 2)
+plt.boxplot(df[df['Pclass'] == 2]['Fare'])
+plt.title('Ticket Price (2nd Class)')
+plt.xlabel('PClass=2')
+plt.xticks([1], ['Fare'])
+plt.ylabel('Ticket Price ($)')
+
+# Subplot 3: Ticket prices for 3rd class
+plt.subplot(1, 3, 3)
+plt.boxplot(df[df['Pclass'] == 3]['Fare'])
+plt.title('Ticket Price (3rd Class)')
+plt.xlabel('PClass=3')
+plt.xticks([1], ['Fare'])
+plt.ylabel('Ticket Price ($)')
+
+# Display the figure
+plt.tight_layout()
+plt.show()
 
