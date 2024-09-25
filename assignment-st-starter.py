@@ -23,6 +23,11 @@ st.dataframe(df)  # Display the DataFrame in a scrollable table
 # Group the data by ticket class and calculate the survival rate for each class
 survival_rate_by_class = df.groupby('Pclass')['Survived'].mean() * 100
 
+
+
+
+
+st.subheader('Titanic Ticket Price Box Plot by Class')
 # Creating a figure with three subplots for box plots of ticket prices across different classes
 fig, axes = plt.subplots(1, 3, figsize=(15, 5))
 plt.style.use('seaborn-v0_8')
@@ -58,3 +63,28 @@ plt.tight_layout()
 st.pyplot(fig)
 
 
+
+
+st.subheader('Line Chart of Ticket Prices (Sorted in Descending Order)')
+# Sort the ticket prices in descending order
+sorted_fares = df['Fare'].sort_values(ascending=False).reset_index(drop=True)
+
+# Create a figure for the line chart
+fig, ax = plt.subplots(figsize=(10, 6))
+plt.style.use('seaborn-v0_8')
+
+# Plot the sorted fares
+ax.plot(sorted_fares, linewidth=2)
+
+# Set the chart title and labels
+ax.set_title('Ticket Prices Sorted in Descending Order', fontsize=14)
+ax.set_xlabel('Passengers (sorted by ticket price)', fontsize=12)
+ax.set_ylabel('Ticket Price ($)', fontsize=12)
+ax.grid(True)
+
+# Display the plot in the Streamlit app
+st.pyplot(fig)
+
+# Optional: Display the dataset for reference
+st.subheader('Titanic Dataset')
+st.dataframe(df)
