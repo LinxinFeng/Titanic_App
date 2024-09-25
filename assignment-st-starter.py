@@ -106,9 +106,13 @@ st.pyplot(fig)
 
 
 st.subheader('different survival rate by different ticket class')
-survival_rate_by_class = df.groupby('Pclass')['Survived'].value_counts(normalize = True)
-survival_rate_by_class.plot.bar()
+survival_rate_by_class = df.groupby('Pclass')['Survived'].value_counts(normalize=True).unstack()  
 
-plt.figure(figsize=(15, 5))
-plt.style.use('seaborn-v0_8')
-st.pyplot(fig)
+fig, ax = plt.subplots(figsize=(15, 5))  
+survival_rate_by_class.plot(kind='bar', ax=ax)  
+plt.title('Survival Rate by Class')  
+plt.xlabel('Passenger Class')  
+plt.ylabel('Survival Rate')  
+plt.xticks(rotation=0)  
+ 
+st.pyplot(fig)  
