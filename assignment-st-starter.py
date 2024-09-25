@@ -36,6 +36,3 @@ ax.set_ylabel('Survival Rate (%)', fontsize=12)
 # Display the plot in the Streamlit app
 st.pyplot(fig)
 
-# Displaying descriptive statistics for the Titanic dataset
-st.subheader('Descriptive Statistics')
-st.write(df.describe())
