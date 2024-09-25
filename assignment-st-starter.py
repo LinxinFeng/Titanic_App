@@ -84,7 +84,3 @@ ax.grid(True)
 
 # Display the plot in the Streamlit app
 st.pyplot(fig)
-
-# Optional: Display the dataset for reference
-st.subheader('Titanic Dataset')
-st.dataframe(df)
