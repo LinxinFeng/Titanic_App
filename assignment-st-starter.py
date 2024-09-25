@@ -57,7 +57,4 @@ plt.tight_layout()
 # Display the plot in Streamlit app
 st.pyplot(fig)
 
-# Optional: Display the dataset for users to explore
-st.subheader('Titanic Dataset')
-st.dataframe(df)
 
