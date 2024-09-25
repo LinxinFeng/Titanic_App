@@ -110,3 +110,5 @@ survival_rate_by_class = df.groupby('Pclass')['Survived'].value_counts(normalize
 survival_rate_by_class.plot.bar()
 
 plt.figure(figsize=(15, 5))
+plt.style.use('seaborn-v0_8')
+st.pyplot(fig)
