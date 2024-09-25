@@ -84,3 +84,22 @@ ax.grid(True)
 
 # Display the plot in the Streamlit app
 st.pyplot(fig)
+
+
+
+
+st.subheader('Distribution of Embarked Ports')
+# Create a figure for the histogram
+fig, ax = plt.subplots(figsize=(8, 6))
+plt.style.use('seaborn-v0_8')
+
+# Plot the histogram for the 'Embarked' column
+df['Embarked'].hist(ax=ax)
+
+# Set the chart title and labels
+ax.set_title('Distribution of Embarked Ports')
+ax.set_xlabel('Embarked Port')
+ax.set_ylabel('Number of Passengers')
+
+# Display the plot in the Streamlit app
+st.pyplot(fig)
